@@ -7,12 +7,14 @@ public class Profissional {
     private String cro;
     private String especializacao;
     private Agenda agenda;
+    private String senha;
 
-    public Profissional(String nome, String cpf, String cro, String especializacao) {
+    public Profissional(String nome, String cpf, String cro, String especializacao, String senha) {
         this.nome = nome;
         this.cpf = cpf;
         this.cro = cro;
         this.especializacao = especializacao;
+        this.senha = senha;
     }
 
     public String getNome() { return nome; }
@@ -29,4 +31,7 @@ public class Profissional {
 
     public Agenda getAgenda() { return agenda; }
     public void setAgenda(Agenda agenda) { this.agenda = agenda; }
+
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
 }

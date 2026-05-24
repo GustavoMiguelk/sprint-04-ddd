@@ -33,7 +33,7 @@ public class ConsultaDao {
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM T_FIAP_CONSULTAS");
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                Profissional prof = new Profissional("", rs.getString("cpf_prof"), "", "");
+                Profissional prof = new Profissional("", rs.getString("cpf_prof"), "", "", "");
                 Beneficiario benef = new Beneficiario("", 0, rs.getString("cpf_benef"), "", null, null);
                 Local local = new Local("", "", "", "");
                 local.setIdLocal(rs.getInt("id_local"));
@@ -54,7 +54,7 @@ public class ConsultaDao {
             stmt.setString(1, codigo);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    Profissional prof = new Profissional("", rs.getString("cpf_prof"), "", "");
+                    Profissional prof = new Profissional("", rs.getString("cpf_prof"), "", "", "");
                     Beneficiario benef = new Beneficiario("", 0, rs.getString("cpf_benef"), "", null, null);
                     Local local = new Local("", "", "", "");
                     local.setIdLocal(rs.getInt("id_local"));

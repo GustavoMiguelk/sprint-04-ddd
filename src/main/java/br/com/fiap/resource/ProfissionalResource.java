@@ -26,6 +26,7 @@ public class ProfissionalResource {
     }
 
     @POST
+    @Path("/cadastrar")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response inserir(Profissional profissional, @Context UriInfo uriInfo) throws ClassNotFoundException, SQLException {
         profissionalBO.inserirBo(profissional);
@@ -47,5 +48,26 @@ public class ProfissionalResource {
     public Response deletar(@PathParam("cpf") String cpf) throws ClassNotFoundException, SQLException {
         profissionalBO.deletarBo(cpf);
         return Response.ok().build();
+    }
+
+    // Classe interna para receber o body do login
+    public static class LoginRequest {
+        public String cro;
+        public String senha;
+    }
+
+    // Endpoint de login
+    @POST
+    @Path("/login")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response login(LoginRequest request) throws ClassNotFoundException, SQLException {
+        Profissional p = profissionalBO.loginBo(request.cro, request.senha);
+        if (p == null) {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity("{\"mensagem\": \"CRO ou senha inválidos\"}")
+                    .build();
+        }
+        return Response.ok(p).build();
     }
 }

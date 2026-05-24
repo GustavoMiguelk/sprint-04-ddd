@@ -31,4 +31,9 @@ public class ProfissionalBO {
         ProfissionalDao dao = new ProfissionalDao();
         return dao.deletar(cpf);
     }
+
+    public Profissional loginBo(String cro, String senha) throws ClassNotFoundException, SQLException {
+        ProfissionalDao dao = new ProfissionalDao();
+        return dao.login(cro, senha);
+    }
 }

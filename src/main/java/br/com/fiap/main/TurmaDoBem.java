@@ -135,7 +135,8 @@ public class TurmaDoBem {
                             texto("Nome do Profissional:"),
                             texto("CPF do Profissional:"),
                             texto("CRO do Profissional:"),
-                            texto("Especialização:")
+                            texto("Especialização:"),
+                            texto("Senha:")
                     );
                     try {
                         ProfissionalDao profissionalDao = new ProfissionalDao();
@@ -271,7 +272,7 @@ public class TurmaDoBem {
                         ProfissionalDao pdao = new ProfissionalDao();
                         Profissional p = pdao.buscarPorCpf(cpf);
                         if (p == null) { mensagem("Profissional não encontrado."); break; }
-                        p = new Profissional(nome, cpf, p.getCro(), espec);
+                        p = new Profissional(nome, cpf, p.getCro(), espec, p.getSenha());
                         mensagem(pdao.atualizar(p));
                     } catch (Exception e) { mensagem("Erro: " + e.getMessage()); }
                     break;
